@@ -5,7 +5,13 @@
     var service = this;
 
     var itemsBought = [];
-    var itemsToBuy = [];
+    var itemsToBuy = [
+      {name: 'cookies', quantity: 10},
+      {name: 'biscuits', quantity: 5},
+      {name: 'groundnuts', quantity: 20},
+      {name: 'apples', quantity: 25},
+      {name: 'cakes', quantity: 10}
+    ];
 
     service.getItemsBought = function() {
       return itemsBought;
@@ -15,14 +21,11 @@
       return itemsToBuy;
     };
 
-    service.buyItem = function(item) {
-      var index = itemsToBuy.indexOf(item);
-
-      if (index >= 0) {
-        itemsToBuy.splice(index, 1);
-        itemsBought.push(item);
-      }
-    }
+    service.buyItem = function(index) {
+      var item = angular.copy(itemsToBuy[index]);
+      itemsToBuy.splice(index, 1);
+      itemsBought.push(item);
+    };
 
   }
 
@@ -33,7 +36,7 @@
 
     ctrl.buyItem = function(itemName) {
       ShoppingListCheckOffService.buyItem(itemName);
-    }
+    };
   }
 
   function AlreadyBoughtShoppingController(ShoppingListCheckOffService) {
