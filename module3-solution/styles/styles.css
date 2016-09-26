@@ -3,10 +3,8 @@ h1 {
 }
 input[type="text"] {
   width: 200px;
-  float: left;
 }
-.narrow-button {
-  float: left;
+.form-inline .narrow-button {
   margin-left: 10px;
 }
 .loader {
@@ -49,4 +47,22 @@ input[type="text"] {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+/*
+  Allow angular.js to be loaded in body, hiding cloaked elements until
+  templates compile.  The !important is important given that there may be
+  other selectors that are more specific or come later and might alter display.
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.list-group {
+  border: none;
+}
+
+.list-group-item {
+  border: none;
+  padding: 0px;
 }

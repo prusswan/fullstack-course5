@@ -1,5 +1,18 @@
-<ul>
-  <li ng-repeat="item in $ctrl.foundItems">
-    {{ item.name }}: {{ item.description }}
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="item in $ctrl.items" ng-mouseenter="show = true" ng-mouseleave="show = false">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          {{ item.short_name }}: {{ item.name }}
+          <div class="btn-group">
+            <button class="btn btn-info pull-right" ng-click="$ctrl.remove($index)">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Don't want this one!
+            </button>
+          </div>
+        </h4>
+      </div>
+      <div class="panel-body" ng-show="show">
+        <span>{{ item.description }}</span>
+      </div>
   </li>
 </ul>
