@@ -12,10 +12,18 @@
     ctrl.found = [];
     ctrl.searchTerm;
     ctrl.lastSearchTerm;
+    ctrl.notFound;
 
     ctrl.findItem = function () {
+      if (!ctrl.searchTerm || ctrl.searchTerm.trim().length == 0) {
+        ctrl.notFound = true;
+        ctrl.lastSearchTerm = "";
+        return;
+      };
+
       MenuSearchService.getMatchedMenuItems(ctrl.searchTerm).then(function(data){
         ctrl.found = data;
+        ctrl.notFound = data.length == 0;
         ctrl.lastSearchTerm = ctrl.searchTerm;
       });
     };
