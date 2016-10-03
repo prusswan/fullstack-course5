@@ -22,14 +22,13 @@
     // categories
     .state('categories', {
       url: '/categories',
-      templateUrl: 'categories.template.html'
-      // templateUrl: 'src/shoppinglist/templates/main-shoppinglist.template.html',
-      // controller: 'MainShoppingListController as mainList',
-      // resolve: {
-      //   items: ['ShoppingListService', function (ShoppingListService) {
-      //     return ShoppingListService.getItems();
-      //   }]
-      // }
+      templateUrl: 'categories.html',
+      controller: 'CategoriesController as list',
+      resolve: {
+        categories: ['MenuDataService', function (MenuDataService) {
+          return MenuDataService.getAllCategories();
+        }]
+      }
     })
 
     // items

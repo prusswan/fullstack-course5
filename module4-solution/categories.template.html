@@ -1,1 +1,9 @@
-Categories
+<ul class="list-group">
+  <li class="list-group-item"
+    ng-class="{active: hover}"
+    ng-mouseenter="hover = true"
+    ng-mouseleave="hover = false"
+    ng-repeat="item in $ctrl.categories">
+    {{ item.short_name }}: {{ item.name }}
+  </li>
+</ul>
