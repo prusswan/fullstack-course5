@@ -33,13 +33,15 @@
 
     // items
     .state('items', {
-      // url: '/item-detail/{itemId}',
-      url: '/items'
-      // templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
-      // controller: 'ItemDetailController as itemDetail',
-      // params: {
-      //   itemId: null
-      // }
+      url: '/items/{categoryShortName}',
+      templateUrl: 'items.html',
+      controller: 'ItemsController as list',
+      resolve: {
+        items: ['MenuDataService', '$stateParams', function (MenuDataService, $stateParams) {
+          return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+        }]
+      }
+
     });
 
   }

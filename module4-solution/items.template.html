@@ -1,0 +1,14 @@
+<div class="panel panel-default"
+  ng-mouseenter="hover = true"
+  ng-mouseleave="hover = false"
+  ng-repeat="item in $ctrl.items">
+  <div class="panel-heading">
+    <b>{{ item.short_name }}</b>: {{ item.name }}
+  </div>
+
+  <ul ng-show="hover" class="list-group">
+    <li ng-repeat="(key, value) in item"
+      class="list-group-item"><b>{{ key }}:</b> {{ value }}</li>
+    <li class="list-group-item"><b>price_large:</b> {{ item.price_large }}</li>
+  </ul>
+</div>
