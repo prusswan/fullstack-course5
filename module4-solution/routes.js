@@ -15,8 +15,8 @@
 
     // Home page
     .state('home', {
-      url: '/'
-      // templateUrl: 'src/shoppinglist/templates/home.template.html'
+      url: '/',
+      templateUrl: 'home.html'
     })
 
     // categories
