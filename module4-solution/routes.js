@@ -22,8 +22,7 @@
     // categories
     .state('categories', {
       url: '/categories',
-      templateUrl: 'categories.html',
-      controller: 'CategoriesController as list',
+      component: 'categories',
       resolve: {
         categories: ['MenuDataService', function (MenuDataService) {
           return MenuDataService.getAllCategories();
@@ -34,12 +33,14 @@
     // items
     .state('items', {
       url: '/items/{categoryShortName}',
-      templateUrl: 'items.html',
-      controller: 'ItemsController as list',
+      component: 'items',
       resolve: {
         items: ['MenuDataService', '$stateParams', function (MenuDataService, $stateParams) {
           return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
         }]
+      },
+      params: {
+        categoryShortName: null
       }
 
     });

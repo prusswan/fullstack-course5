@@ -1,7 +1,9 @@
+<h3 ng-if="$ctrl.category = $ctrl.items.data.category">Items for category: {{$ctrl.category.name}} [{{$ctrl.category.short_name}}]</h3>
+
 <div class="panel panel-default"
   ng-mouseenter="hover = true"
   ng-mouseleave="hover = false"
-  ng-repeat="item in $ctrl.items">
+  ng-repeat="item in $ctrl.items.data.menu_items">
   <div class="panel-heading">
     <b>{{ item.short_name }}</b>: {{ item.name }}
   </div>
