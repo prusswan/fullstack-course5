@@ -43,6 +43,10 @@ form[name='userForm'] {
   padding: 15px;
 }
 
+#user-info .panel {
+  background: none;
+}
+
 /* MENU CATEGORIES PAGE */
 .category-tile {
   position: relative;

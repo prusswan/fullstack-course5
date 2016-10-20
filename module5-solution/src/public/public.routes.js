@@ -24,6 +24,20 @@ function routeConfig ($stateProvider) {
       templateUrl: 'src/public/home/signup.html',
       controller: 'HomeController as homeCtrl'
     })
+    .state('user', {
+      absract: true,
+      template: '<link rel="stylesheet" href="css/public.css"><ui-view />'
+    })
+    .state('user.info', {
+      url: '/user/info',
+      templateUrl: 'src/user/info.html',
+      controller: 'UserController as userCtrl',
+      resolve: {
+        menuItems: ['MenuService', function (MenuService) {
+          return MenuService.getMenuItems();
+        }]
+      }
+    })
     .state('public.menu', {
       url: '/menu',
       templateUrl: 'src/public/menu/menu.html',

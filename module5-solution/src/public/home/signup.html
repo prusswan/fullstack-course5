@@ -67,7 +67,7 @@
   <br>
   <div class="row">
     <div class="col-xs-12">
-      <div class="alert alert-{{ homeCtrl.message.status }}" role="alert" ng-if="homeCtrl.message">{{ homeCtrl.message.content }}</div>
+      <div class="alert alert-{{ homeCtrl.message.status }}" role="alert" ng-if="homeCtrl.message">{{ homeCtrl.message.content }} <a ui-sref="user.info" class="alert-link">Check your info here</a></div>
     </div>
   </div>
 </div>
