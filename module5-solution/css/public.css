@@ -37,6 +37,12 @@
 }
 /* END HOME PAGE */
 
+form[name='userForm'] {
+  background: white;
+  color: black;
+  padding: 15px;
+}
+
 /* MENU CATEGORIES PAGE */
 .category-tile {
   position: relative;

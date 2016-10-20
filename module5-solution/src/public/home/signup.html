@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <form name="userForm" class="form-horizontal" role="form" ng-submit="homeCtrl.register(userForm)" novalidate>
+        <h2>Sign Up</h2>
+
+        <div class="form-group" ng-class="{ 'has-error': (userForm.$submitted || userForm.firstName.$touched || userForm.lastName.$touched) && (userForm.firstName.$invalid || userForm.lastName.$invalid) }">
+          <label for="name" class="col-xs-2 control-label">Name</label>
+          <div class="col-xs-10">
+            <div class="form-inline">
+              <input type="text" class="form-control" name="firstName" ng-model="homeCtrl.user.first_name" placeholder="First name" required/>
+              <input type="text" class="form-control" name="lastName" ng-model="homeCtrl.user.last_name" placeholder="Last name" required/>
+
+              <div class="help-block" ng-messages="userForm.firstName.$error" ng-if="userForm.firstName.$touched || userForm.$submitted">
+                <div ng-message="required">First name is required</div>
+              </div>
+              <div class="help-block" ng-messages="userForm.lastName.$error" ng-if="userForm.lastName.$touched || userForm.$submitted">
+                <div ng-message="required">Last name is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': (userForm.email.$touched || userForm.$submitted) && userForm.email.$invalid }">
+          <label for="email" class="col-xs-2 control-label">Email</label>
+          <div class="col-xs-10">
+            <input type="email" class="form-control" name="email" ng-model="homeCtrl.user.email" required/>
+
+            <div class="help-block" ng-messages="userForm.email.$error" ng-if="userForm.email.$touched || userForm.$submitted">
+              <div ng-message="required">Email is required</div>
+              <div ng-message="email">Email is invalid</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': (userForm.phone.$touched || userForm.$submitted) && userForm.phone.$invalid }">
+          <label for="phone" class="col-xs-2 control-label">Phone number</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" name="phone" ng-model="homeCtrl.user.phone" ng-pattern="/^\d[ \d]*$/" required/>
+
+            <div class="help-block" ng-messages="userForm.phone.$error" ng-if="userForm.phone.$touched || userForm.$submitted">
+              <div ng-message="required">Phone number is required</div>
+              <div ng-message="pattern">Phone number should be numeric</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error': (userForm.dish.$touched || userForm.$submitted) && userForm.dish.$invalid }">
+          <label for="dish" class="col-xs-2 control-label">Favorite Dish? (short_name)</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" name="dish" ng-model="homeCtrl.user.dish" ng-model-options="{debounce: 100}" item-in-menu-list/>
+
+            <div class="help-block" ng-messages="userForm.dish.$error" ng-if="userForm.dish.$touched || userForm.$submitted">
+              <div ng-message="itemInMenuList">No such menu number exists</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-offset-2 col-xs-10">
+            <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid && userForm.$submitted">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="alert alert-{{ homeCtrl.message.status }}" role="alert" ng-if="homeCtrl.message">{{ homeCtrl.message.content }}</div>
+    </div>
+  </div>
+</div>
